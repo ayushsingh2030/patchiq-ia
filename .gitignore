@@ -1,0 +1,24 @@
+# Python virtual environments
+venv/
+.venv/
+
+# Environment variables and secrets
+.env
+*.pem
+!.env.example
+certs/*.pem
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Test/cache files
+.pytest_cache/
+.mypy_cache/
+
+# Docker/local files
+docker-data/
+
+# Backups / tools (local only)
+backups/
+tools/*.exe

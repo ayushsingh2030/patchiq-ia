@@ -1,0 +1,58 @@
+services:
+
+  redis:
+    image: redis:7-alpine
+    container_name: patchiq-redis
+
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+    restart: unless-stopped
+
+
+  api:
+    build: .
+    container_name: patchiq-api
+
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000
+
+    ports:
+      - "8000:8000"
+
+    env_file:
+      - .env
+
+    environment:
+      REDIS_HOST: redis
+
+    depends_on:
+      redis:
+        condition: service_healthy
+
+    restart: unless-stopped
+
+
+  worker:
+    build: .
+    container_name: patchiq-worker
+
+    command: python -u app/worker.py
+
+    env_file:
+      - .env
+
+    environment:
+      REDIS_HOST: redis
+      OLLAMA_HOST: "http://host.docker.internal:11434"
+
+    volumes:
+      - ./certs/patchiq-ia.2026-07-23.private-key.pem:/app/certs/patchiq-ia.2026-07-23.private-key.pem:ro
+
+    depends_on:
+      redis:
+        condition: service_healthy
+
+    restart: unless-stopped

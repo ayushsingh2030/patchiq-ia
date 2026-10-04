@@ -1,0 +1,21 @@
+venv/
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+
+# Secrets - mounted via volume/env_file at runtime, not baked into image
+.env
+*.pem
+certs/
+
+.git/
+.gitignore
+
+# Not needed in image
+tests/
+tools/
+backups/
+README.md
+*.md
