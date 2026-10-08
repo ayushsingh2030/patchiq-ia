@@ -20,6 +20,19 @@ The central objective of PatchIQ-iA is to make security analysis a natural part 
 | Atharva Singh | 25BCE10984 |
 | Krishna Nishad | 25BCE11329 |
 
+
+## Project Team Role and Work
+
+| Name | Registration Number | Role |
+|---|---|---|
+| Ayush Kumar Singh | 25BCE11163 | Architecture, backend and AI pipeline |
+| Aditya Pandey | 25BCE11019 | Pull request testing and QA |
+| Atharva Singh | 25BCE10984 | Documentation and architecture |
+| Vishal Yadav | 25BCE11149 | Test coverage and example library |
+| Krishna Nishad | 25BCE11329 | Repository hygiene and presentation support |
+
+Detailed breakdown: [CONTRIBUTIONS.md](CONTRIBUTIONS.md)
+
 ---
 
 ## Abstract
